@@ -1,4 +1,50 @@
-// Bank routing number to info map
+// Number to words conversion
+const ones = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+const teens = ['Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+const tens = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+
+function numberToWords(num) {
+    if (num === 0) return 'Zero';
+    let words = '';
+    if (num >= 1000000) {
+        words += numberToWords(Math.floor(num / 1000000)) + ' Million ';
+        num %= 1000000;
+    }
+    if (num >= 1000) {
+        words += numberToWords(Math.floor(num / 1000)) + ' Thousand ';
+        num %= 1000;
+    }
+    if (num >= 100) {
+        words += ones[Math.floor(num / 100)] + ' Hundred ';
+        num %= 100;
+    }
+    if (num >= 20) {
+        words += tens[Math.floor(num / 10)] + ' ';
+        num %= 10;
+    } else if (num >= 10) {
+        words += teens[num - 10] + ' ';
+        num = 0;
+    }
+    if (num > 0) {
+        words += ones[num] + ' ';
+    }
+    return words.trim();
+}
+
+document.getElementById('amount').addEventListener('input', function() {
+    const amount = parseFloat(this.value);
+    if (isNaN(amount) || amount < 0) {
+        document.getElementById('amountWords').value = '';
+        return;
+    }
+    const dollars = Math.floor(amount);
+    const cents = Math.round((amount - dollars) * 100);
+    let words = numberToWords(dollars) + ' Dollars';
+    if (cents > 0) {
+        words += ' and ' + numberToWords(cents) + ' Cents';
+    }
+    document.getElementById('amountWords').value = words;
+});
 const bankData = {
     '021000021': { name: 'JPMorgan Chase Bank', address: '270 Park Avenue, New York, NY 10017' },
     '121000358': { name: 'Bank of America', address: '100 North Tryon Street, Charlotte, NC 28255' },
