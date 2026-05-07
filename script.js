@@ -1,4 +1,26 @@
+// Bank routing number to info map
+const bankData = {
+    '021000021': { name: 'JPMorgan Chase Bank', address: '270 Park Avenue, New York, NY 10017' },
+    '121000358': { name: 'Bank of America', address: '100 North Tryon Street, Charlotte, NC 28255' },
+    '031100173': { name: 'Wells Fargo Bank', address: '420 Montgomery Street, San Francisco, CA 94104' },
+    '051000017': { name: 'Citibank', address: '388 Greenwich Street, New York, NY 10013' },
+    '111000614': { name: 'US Bank', address: '800 Nicollet Mall, Minneapolis, MN 55402' },
+    // Add more as needed
+};
+
+document.getElementById('routing').addEventListener('input', function() {
+    const routing = this.value;
+    if (routing.length === 9 && bankData[routing]) {
+        document.getElementById('bankName').value = bankData[routing].name;
+        document.getElementById('bankAddress').value = bankData[routing].address;
+    } else {
+        document.getElementById('bankName').value = '';
+        document.getElementById('bankAddress').value = '';
+    }
+});
+
 document.getElementById('printBtn').addEventListener('click', function() {
+    const routing = document.getElementById('routing').value;
     const bankName = document.getElementById('bankName').value;
     const bankAddress = document.getElementById('bankAddress').value;
     const payorName = document.getElementById('payorName').value;
@@ -9,7 +31,7 @@ document.getElementById('printBtn').addEventListener('click', function() {
     const amountWords = document.getElementById('amountWords').value;
     const memo = document.getElementById('memo').value;
 
-    if (!bankName || !bankAddress || !payorName || !payorAddress || !date || !payee || !amount || !amountWords) {
+    if (!routing || !bankName || !bankAddress || !payorName || !payorAddress || !date || !payee || !amount || !amountWords) {
         alert('Please fill in all required fields.');
         return;
     }
@@ -28,6 +50,7 @@ document.getElementById('printBtn').addEventListener('click', function() {
     document.getElementById('previewAmount').textContent = amount;
     document.getElementById('previewAmountWords').textContent = amountWords;
     document.getElementById('previewMemo').textContent = memo;
+    document.getElementById('micrRouting').textContent = routing;
 
     // Show preview
     document.getElementById('checkPreview').style.display = 'block';

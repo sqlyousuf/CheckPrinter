@@ -10,11 +10,14 @@
     <div class="container">
         <h1>Check Printer</h1>
         <form id="checkForm">
+            <label for="routing">Routing Number:</label>
+            <input type="text" id="routing" placeholder="Enter 9-digit routing number" maxlength="9" required><br><br>
+
             <label for="bankName">Bank Name:</label>
-            <input type="text" id="bankName" placeholder="Enter bank name" required><br><br>
+            <input type="text" id="bankName" placeholder="Enter bank name" required readonly><br><br>
 
             <label for="bankAddress">Bank Address:</label>
-            <input type="text" id="bankAddress" placeholder="Enter bank address" required><br><br>
+            <input type="text" id="bankAddress" placeholder="Enter bank address" required readonly><br><br>
 
             <label for="payorName">Your Name/Company:</label>
             <input type="text" id="payorName" placeholder="Enter your name or company name" required><br><br>
@@ -65,7 +68,7 @@
                 Signature: ___________________________
             </div>
             <div class="micr">
-                <input type="text" id="routing" placeholder="Routing Number" required>
+                <span id="micrRouting"></span>
                 <input type="text" id="account" placeholder="Account Number" required>
             </div>
         </div>
