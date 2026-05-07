@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: inline-block;
+    width: 150px;
+}
+
+input {
+    width: 300px;
+    padding: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.check {
+    border: 1px solid #000;
+    padding: 20px;
+    width: 700px;
+    height: 300px;
+    position: relative;
+    background-color: white;
+}
+
+.check-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.amount-line {
+    position: absolute;
+    right: 20px;
+    top: 50px;
+    font-size: 18px;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+}
+
+.amount-words {
+    margin-top: 80px;
+    font-size: 14px;
+}
+
+.memo {
+    margin-top: 20px;
+}
+
+.signature {
+    position: absolute;
+    bottom: 60px;
+    right: 20px;
+}
+
+.micr {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-family: 'MICR Encoding', monospace;
+    font-size: 12px;
+}
+
+.micr input {
+    width: 150px;
+    margin-right: 10px;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    .check, .check * {
+        visibility: visible;
+    }
+    .check {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto;
+    }
+    .micr input {
+        border: none;
+        background: transparent;
+    }
+}

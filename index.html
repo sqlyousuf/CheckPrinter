@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Printer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Check Printer</h1>
+        <form id="checkForm">
+            <label for="date">Date:</label>
+            <input type="date" id="date" required><br><br>
+
+            <label for="payee">Payee:</label>
+            <input type="text" id="payee" placeholder="Enter payee name" required><br><br>
+
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" step="0.01" placeholder="0.00" required><br><br>
+
+            <label for="amountWords">Amount in Words:</label>
+            <input type="text" id="amountWords" placeholder="Enter amount in words" required><br><br>
+
+            <label for="memo">Memo:</label>
+            <input type="text" id="memo" placeholder="Enter memo"><br><br>
+
+            <button type="button" id="printBtn">Print Check</button>
+        </form>
+
+        <div id="checkPreview" class="check" style="display: none;">
+            <div class="check-header">
+                <div class="date">Date: <span id="previewDate"></span></div>
+                <div class="payee">Pay to the Order of: <span id="previewPayee"></span></div>
+            </div>
+            <div class="amount-line">
+                $<span id="previewAmount"></span>
+            </div>
+            <div class="amount-words">
+                <span id="previewAmountWords"></span>
+            </div>
+            <div class="memo">
+                Memo: <span id="previewMemo"></span>
+            </div>
+            <div class="signature">
+                Signature: ___________________________
+            </div>
+            <div class="micr">
+                <input type="text" id="routing" placeholder="Routing Number" required>
+                <input type="text" id="account" placeholder="Account Number" required>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
