@@ -10,6 +10,18 @@
     <div class="container">
         <h1>Check Printer</h1>
         <form id="checkForm">
+            <label for="bankName">Bank Name:</label>
+            <input type="text" id="bankName" placeholder="Enter bank name" required><br><br>
+
+            <label for="bankAddress">Bank Address:</label>
+            <input type="text" id="bankAddress" placeholder="Enter bank address" required><br><br>
+
+            <label for="payorName">Your Name/Company:</label>
+            <input type="text" id="payorName" placeholder="Enter your name or company name" required><br><br>
+
+            <label for="payorAddress">Your Address:</label>
+            <input type="text" id="payorAddress" placeholder="Enter your address" required><br><br>
+
             <label for="date">Date:</label>
             <input type="date" id="date" required><br><br>
 
@@ -29,10 +41,17 @@
         </form>
 
         <div id="checkPreview" class="check" style="display: none;">
-            <div class="check-header">
-                <div class="date">Date: <span id="previewDate"></span></div>
-                <div class="payee">Pay to the Order of: <span id="previewPayee"></span></div>
+            <div class="bank-info">
+                <div id="previewBankName"></div>
+                <div id="previewBankAddress"></div>
             </div>
+            <div class="payor-info">
+                <div id="previewPayorName"></div>
+                <div id="previewPayorAddress"></div>
+            </div>
+            <div class="check-number">Check No: <span id="previewCheckNumber"></span></div>
+            <div class="date">Date: <span id="previewDate"></span></div>
+            <div class="payee">Pay to the Order of: <span id="previewPayee"></span></div>
             <div class="amount-line">
                 $<span id="previewAmount"></span>
             </div>
